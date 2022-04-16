@@ -1,10 +1,13 @@
-fun handleMessage(inputMessage: String, chatId: String): String {
-    return when(inputMessage){
-        "/aboba" -> {
-            val calculated = 2 * 5
-            "aboba aboba + $calculated"
-        }
+import kotlin.random.Random
 
-        else -> "unknown command"
+fun handleMessage(inputMessage: String, chatId: String): String {
+    val args = inputMessage.split(" ")
+    return when (args[0]) {
+        "/roll" -> if(args.size>1){
+            "Шанс того, что ${args[1]}: ${Random.nextInt(1, 100)}%"
+        } else{
+            "Недостаточно аргументов"
+        }
+        else -> "Неизвестная команда"
     }
 }
