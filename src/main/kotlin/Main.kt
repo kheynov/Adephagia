@@ -6,8 +6,8 @@ fun main() {
     println("Hello World!")
     val botsApi = TelegramBotsApi(DefaultBotSession::class.java)
     try {
-        botsApi.registerBot(Bot {
-            return@Bot it!!.message.text
+        botsApi.registerBot(Bot{
+            return@Bot handleMessage(it!!.message.text, it.message.chatId.toString())
         })
     } catch (e: Exception) {
         println(e.localizedMessage)
